@@ -1,0 +1,31 @@
+{
+  "name": "node-opskins",
+  "version": "1.0.0",
+  "description": "a library to interact with the opskins api what is not shit and uses new features",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dev-Yukine/node-opskins.git"
+  },
+  "keywords": [
+    "opskins",
+    "skins",
+    "csgo"
+  ],
+  "author": "Yukine",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Dev-Yukine/node-opskins/issues"
+  },
+  "homepage": "https://github.com/Dev-Yukine/node-opskins#readme",
+  "dependencies": {
+    "snekfetch": "^3.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "eslint-config-aqua": "^2.0.1"
+  }
+}
