@@ -6,7 +6,7 @@ module.exports = class Cashout extends Endpoint {
 	}
 
 	async getAdress(processor) {
-		const query = [{ name: 'processor', value: processor }];
+		const query = [{ key: 'processor', value: processor }];
 		const result = await this._get({ methodName: 'GetAddress', query });
 		return new this.Response(result);
 	}
