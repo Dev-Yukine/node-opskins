@@ -37,15 +37,16 @@ module.exports = class Endpoint {
 	async _post(options = { gatewayVersion: 1 }) {
 		const { methodName, gatewayVersion, data } = options;
 		const path = this.path(methodName, gatewayVersion);
-		for (const i in data) {
-			if (!data.hasOwnProperty(i)) {
+		for (const property in data) {
+			if (!data.hasOwnProperty(property)) {
 				continue;
 			}
-			if (data[i] instanceof Array) {
-				data[i].forEach((value, index) => {
-					data[`${i}[${index}]`] = value;
-				});
-				delete data[i];
+
+			if (data[property] instanceof Array) {
+				for (const value in data[property]) {
+					data[`${property}[${value}]`] = value;
+				}
+				delete data[property];
 			}
 		}
 		this.client.emit('debug', `POST request to ${path}`);
