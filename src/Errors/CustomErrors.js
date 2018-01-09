@@ -19,6 +19,7 @@ class AccountError extends Error {
 	constructor(statusCode, detailedMessage) {
 		const { message, genericMessage } = errorCodes[statusCode];
 		super(message);
+		this.name = this.constructor.name;
 		this.status = statusCode;
 		this.detailedMessage = detailedMessage;
 		this.genericMessage = genericMessage;
@@ -29,6 +30,7 @@ class InternalError extends Error {
 	constructor(statusCode, detailedMessage) {
 		const { message, genericMessage } = errorCodes[statusCode];
 		super(message);
+		this.name = this.constructor.name;
 		this.status = statusCode;
 		this.detailedMessage = detailedMessage;
 		this.genericMessage = genericMessage;
@@ -39,6 +41,7 @@ class UserError extends Error {
 	constructor(statusCode, detailedMessage) {
 		const { message, genericMessage } = errorCodes[statusCode];
 		super(message);
+		this.name = this.constructor.name;
 		this.status = statusCode;
 		this.detailedMessage = detailedMessage;
 		this.genericMessage = genericMessage;
@@ -49,6 +52,7 @@ class ThirdPartyError extends Error {
 	constructor(statusCode, detailedMessage) {
 		const { message, genericMessage } = errorCodes[statusCode];
 		super(message);
+		this.name = this.constructor.name;
 		this.status = statusCode;
 		this.detailedMessage = detailedMessage;
 		this.genericMessage = genericMessage;

@@ -16,26 +16,30 @@ module.exports = class Endpoint {
 		return `${baseURL}/${name}/${methodName}/v${gatewayVersion}`;
 	}
 
-	async _get(options = { gatewayVersion: 1 }) {
-		const { methodName, gatewayVersion, data } = options;
+	async _get(options) {
+		let { methodName, gatewayVersion, query } = options;
+		if (!gatewayVersion) gatewayVersion = 1;
 		const path = this.path(methodName, gatewayVersion);
 		const request = get(path)
 			.set('Authorization', `Basic ${Buffer.from(`${this.client.token}:`, 'ascii').toString('base64')}`);
-		for (const query of data) {
-			if (query && query.key && query.value) {
-				request.query(query.key, query.value);
+		if (query) {
+			for (const queryElement of query) {
+				if (queryElement && queryElement.key && queryElement.value) {
+					request.query(queryElement.key, queryElement.value);
+				}
 			}
 		}
 		this.client.emit('debug', `GET request to ${path}`);
 		const { body, headers } = await request;
 		this.client.emit('debug', `OPSkins API successful responded to GET request with status code: ${body.status}`);
-		this.client.emit('queriesRemaining', Number(headers['X-Queries-Remaining']));
-		if (body.status !== 1) throw CustomErrorConstructor.construct(body.status);
+		this.client.emit('queriesRemaining', Number(headers['x-queries-remaining']));
+		if (body.status !== 1) throw CustomErrorConstructor.construct(body);
 		return { body, headers };
 	}
 
-	async _post(options = { gatewayVersion: 1 }) {
-		const { methodName, gatewayVersion, data } = options;
+	async _post(options) {
+		let { methodName, gatewayVersion, data } = options;
+		if (!gatewayVersion) gatewayVersion = 1;
 		const path = this.path(methodName, gatewayVersion);
 		for (const property in data) {
 			if (!data.hasOwnProperty(property)) {
@@ -55,8 +59,8 @@ module.exports = class Endpoint {
 			.set('Content-Type', 'application/x-www-form-urlencoded')
 			.send(stringify(data));
 		this.client.emit('debug', `OPSkins API successful responded to POST request with status code: ${body.status}`);
-		this.client.emit('queriesRemaining', Number(headers['X-Queries-Remaining']));
-		if (body.status !== 1) throw CustomErrorConstructor.construct(body.status);
+		this.client.emit('queriesRemaining', Number(headers['x-queries-remaining']));
+		if (body.status !== 1) throw CustomErrorConstructor.construct(body);
 		return { body, headers };
 	}
 };

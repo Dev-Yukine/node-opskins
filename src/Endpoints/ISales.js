@@ -14,7 +14,7 @@ module.exports = class Sales extends Endpoint {
 			{ key: 'per_page', value: perPage },
 			{ key: 'sort', value: sort }
 		];
-		const result = await this._get({ methodName: 'GetInventory', query });
+		const result = await this._get({ methodName: 'GetSales', query });
 		return new this.Response(result);
 	}
 

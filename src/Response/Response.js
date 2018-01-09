@@ -6,7 +6,7 @@ module.exports = class OPSkinsResponse {
 		this.credits = body.credits || null;
 		this.currentPage = body.current_page || null;
 		this.totalPages = body.total_pages || null;
-		this.queriesRemaining = headers['X-Queries-Remaining'];
+		this.queriesRemaining = headers['x-queries-remaining'] || null;
 		this.response = body.response || null;
 	}
 };
