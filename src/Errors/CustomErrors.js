@@ -1,6 +1,16 @@
 const errorCodes = require('./ErrorCodes.json');
 
+/**
+ * Abstracted Class to Construct CustomErrors
+ * @abstract
+ * @class
+*/
 class CustomErrorConstructor {
+	/**
+	 * The method to construct a CustomError from OPSkins API
+	 * @param {Buffer} requestBody the body of the failed request
+	 * @returns {AccountError|InternalError|UserError|ThirdPartyError}
+	 */
 	static construct(requestBody) {
 		const { status, message } = requestBody;
 		if (status > 1000 && status < 2000) {
@@ -16,6 +26,11 @@ class CustomErrorConstructor {
 }
 
 class AccountError extends Error {
+	/**
+	 * Creates a new Instance of this Error Class
+	 * @param {number} statusCode the status code from the OPskins API
+	 * @param {string} detailedMessage the status message from the OPSkins API
+	 */
 	constructor(statusCode, detailedMessage) {
 		const { message, genericMessage } = errorCodes[statusCode];
 		super(message);
@@ -27,6 +42,11 @@ class AccountError extends Error {
 }
 
 class InternalError extends Error {
+	/**
+	 * Creates a new Instance of this Error Class
+	 * @param {number} statusCode the status code from the OPskins API
+	 * @param {string} detailedMessage the status message from the OPSkins API
+	 */
 	constructor(statusCode, detailedMessage) {
 		const { message, genericMessage } = errorCodes[statusCode];
 		super(message);
@@ -38,6 +58,11 @@ class InternalError extends Error {
 }
 
 class UserError extends Error {
+	/**
+	 * Creates a new Instance of this Error Class
+	 * @param {number} statusCode the status code from the OPskins API
+	 * @param {string} detailedMessage the status message from the OPSkins API
+	 */
 	constructor(statusCode, detailedMessage) {
 		const { message, genericMessage } = errorCodes[statusCode];
 		super(message);
@@ -49,6 +74,11 @@ class UserError extends Error {
 }
 
 class ThirdPartyError extends Error {
+	/**
+	 * Creates a new Instance of this Error Class
+	 * @param {number} statusCode the status code from the OPskins API
+	 * @param {string} detailedMessage the status message from the OPSkins API
+	 */
 	constructor(statusCode, detailedMessage) {
 		const { message, genericMessage } = errorCodes[statusCode];
 		super(message);
