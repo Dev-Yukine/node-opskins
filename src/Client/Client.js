@@ -21,11 +21,13 @@ const User = require('../Endpoints/IUser.js');
  * @property {Test} test Test Interface
  * @property {User} user User Interface
 */
+
 module.exports = class Client extends EventEmitter {
 	/**
 	 * Creates a Client instance to interact with the the OPSkins API
 	 * @param {string} token The API Token to log in with
 	 */
+
 	constructor(token) {
 		super();
 		if (!token || typeof token !== 'string') throw new TypeError('You didn\'t provided an token or it wasn\'t a string! || get one here http://bit.ly/2CMew9X');

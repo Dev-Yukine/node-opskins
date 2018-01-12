@@ -98,6 +98,7 @@ module.exports = class Cashout extends Endpoint {
 	 * @param {number} amount The amount you wish to cashout, in USD cents.
 	 * @returns {Promise<OPSkinsResponse>}
 	 */
+
 	async requestSkrill(amount) {
 		const data = { amount };
 		const result = await this._post({ methodName: 'RequestSkrill', data });
@@ -107,6 +108,7 @@ module.exports = class Cashout extends Endpoint {
 	 * Get your account's balance, including how much of your balance can be cashed out.
 	 * @returns {Promise<OPSkinsResponse>}
 	*/
+
 	async getCashoutableBalance() {
 		const result = await this._get({ methodName: 'GetCashoutableBalance' });
 		return new this.Response(result);

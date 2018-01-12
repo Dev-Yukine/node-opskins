@@ -7,6 +7,7 @@ const OPSkinsResponse = require('../Response/Response.js'); // eslint-disable-li
  * @class
  * @extends {Endpoint}
 */
+
 module.exports = class Inventory extends Endpoint {
 	/**
 	 * Creates a new Instance of this Inventory Interface class
@@ -48,6 +49,7 @@ module.exports = class Inventory extends Endpoint {
 	 * @property {number} contextid The Steam context ID which contains this item (2 for Valve games, 6 for Steam Community items, 1 for H1Z1, etc.). When you right-click on an item in your Steam inventory and copy its URL, the context ID is the second number after the hash.
 	 * @property {number} assetid The Steam asset ID of the item. This is also known as just the item's id
 	 */
+
 	/**
 	 * Add between 1 and 50 items (upper cap subject to change) to your On-Site Inventory.
 	 * @param {Array<DepositObject>} items An array of item Objects to deposit

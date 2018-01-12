@@ -12,12 +12,14 @@ const Response = require('../Response/Response.js');
  * @property {Client} client the client what instantiated this endpoint
  * @property {Response} Response the Response class to instantiate
 */
+
 module.exports = class Endpoint {
 	/**
 	 * Creates a Endpoint class with all core methods for every endpoint
 	 * @param {Client} client the client that instantiated this class
 	 * @param {string} name the name of this endpoint
 	 */
+
 	constructor(client, name) {
 		this.baseURL = 'https://api.opskins.com';
 		this.name = name;
@@ -31,6 +33,7 @@ module.exports = class Endpoint {
 	 * @param {string} gatewayVersion the version of the gateaway
 	 * @returns {string}
 	 */
+
 	path(methodName, gatewayVersion) {
 		const { baseURL, name } = this;
 		return `${baseURL}/${name}/${methodName}/v${gatewayVersion}`;
@@ -58,6 +61,7 @@ module.exports = class Endpoint {
 	 * @param {Array<Query>} options.query the query to apply on this request
 	 * @returns {Promise<RequestReturn>}
 	 */
+
 	async _get(options) {
 		let { methodName, gatewayVersion, query } = options;
 		if (!gatewayVersion) gatewayVersion = 1;
@@ -87,6 +91,7 @@ module.exports = class Endpoint {
 	 * @param {Object} options.data the body of this request.
 	 * @returns {RequestReturn}
 	 */
+
 	async _post(options) {
 		let { methodName, gatewayVersion, data } = options;
 		if (!gatewayVersion) gatewayVersion = 1;
