@@ -1,4 +1,13 @@
+/**
+ * Represent a Response from the OPSkins API
+ * @class
+*/
+
 module.exports = class OPSkinsResponse {
+	/**
+	 * Instanciate this OPSkins Respond Class
+	 * @param {Object} data the data of the request
+	 */
 	constructor(data) {
 		const { body, headers } = data;
 		this.time = body.time || null;
