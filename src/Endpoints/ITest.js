@@ -20,6 +20,7 @@ module.exports = class Test extends Endpoint {
 	 * Used to test an unauthenticated request.
 	 * @returns {Promise<OPSkinsResponse>}
 	*/
+
 	async test() {
 		const result = await this._get({ methodName: 'Test' });
 		return new this.Response(result);
@@ -28,6 +29,7 @@ module.exports = class Test extends Endpoint {
 	 * Used to test an authenticated request.
 	 * @returns {Promise<OPSkinsResponse>}
 	*/
+
 	async testAuth() {
 		const result = await this._get({ methodName: 'TestAuthed' });
 		return new this.Response(result);

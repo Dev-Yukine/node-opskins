@@ -21,6 +21,7 @@ module.exports = class Support extends Endpoint {
 	 * @param {number} saleID The ID of the sale (or on-site inventory item) that you want to attempt to repair
 	 * @returns {Promise<OPSkinsResponse>}
 	 */
+
 	async repairItem(saleID) {
 		const data = { saleID };
 		const result = await this._post({ methodName: 'RepairItem', data });

@@ -1,7 +1,7 @@
 {
   "name": "node-opskins",
   "version": "1.0.0",
-  "description": "a library to interact with the opskins api what is not shit and uses new features",
+  "description": "a library to interact with the opskins api what makes usage of the newest ecmascript features.",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
